@@ -85,4 +85,15 @@ class DoorkeeperClient < Sinatra::Base
       erb :error, :layout => !request.xhr?
     end
   end
+
+  get '/explore_any' do
+    raise "Please call a valid endpoint" unless params[:explore]
+    begin
+      response = access_token.get("/api/v1/#{params[:explore]}")
+      @json = JSON.parse(response.body)
+      erb :explore, :layout => !request.xhr?
+    rescue OAuth2::Error => @error
+      erb :error, :layout => !request.xhr?
+    end
+  end
 end

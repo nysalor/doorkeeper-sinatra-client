@@ -21,6 +21,13 @@
           <a href="/sign_out" class="btn primary">Sign out</a>
         </div>
 
+        <div class="well">
+          <form action="/explore_any">
+            <input type="text" name="explore" size="50">
+            <input type="submit" value="Go">
+          </form>
+        </div>
+
         <p>Your access token: <code><%= session[:access_token] %></code> (<a href="/refresh" title="<%= session[:refresh_token] %>">refresh</a>)</p>
 
         <p><pre id="display-json">Select one of the api methods above</pre></p>
